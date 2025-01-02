@@ -1,0 +1,27 @@
+int compare_key() {
+
+unsigned int len = strlen(key_input);
+unsigned int correct_len = strlen(correct_key);
+int i, random, punishment = 0, false_key = 0;
+
+unsigned int seed = time(0);
+srand(seed);
+random = (rand() % 10);
+
+if (len != correct_len){
+usleep( 800000 * (random));
+return 1;
+}
+
+
+for (i = correct_len - 1; i >= 0; i--) {
+    if (key_input[i] != correct_key[i]) {
+        false_key = 1;
+    }
+}
+
+
+// take that , now you won't be able to do a side−channel attack
+usleep( 800000 * (random));
+return false_key;
+}
